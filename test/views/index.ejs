@@ -1,0 +1,619 @@
+<div class="contentMain">
+  <% if (Ads['顶部']!=null){ %>
+  <% for(var i=0;i<Ads['顶部'].length;i++){ %>
+  <% if (Ads['顶部'][i].Type=='P'){ %>
+  <div class="contentWarning" <% if (Ads['顶部'][i].Link){ %> onclick='window.open("<%=Ads['顶部'][i].Link%>")' <% } %>>
+    <img src="<%=Ads['顶部'][i].Img%>" alt="<%=Ads['顶部'][i].Title%>" />
+  </div>
+  <% }else if(Ads['顶部'][i].Type=='T'){%>
+  <div class="contentMainTitle" <% if (Ads['顶部'][i].Link){ %> onclick='window.open("<%=Ads['顶部'][i].Link%>")' <% } %>>
+    <span><%=Ads['顶部'][i].Title%></span>
+  </div>
+  <% } %>
+  <% } %>
+  <% }%>
+  <div class="contentCarousel">
+    <div class="contentCarouselLeft">
+      <div class="layui-carousel" id="contentCorsousal">
+        <div carousel-item>
+          <% if (Ads['轮播图']!=null){ %>
+          <% for(var i=0;i<Ads['轮播图'].length;i++){ %>
+          <div class="carouselItem" <% if (Ads['轮播图'][i].Link){ %> onclick='window.open("<%=Ads['轮播图'][i].Link%>")'
+            <% } %>>
+            <div style="background: url('<%=Ads['轮播图'][i].Img%>') no-repeat; background-size: 100% 100%; "
+              class="carousel-list">
+              <div class="carousel-title"><%=Ads['轮播图'][i].Title%></div>
+            </div>
+            <!-- <img src="<%=Ads['轮播图'][i].Img%>" alt="<%=Ads['轮播图'][i].Title%>" /> -->
+          </div>
+          <% } %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <div class="contentCarouselRight">
+      <div class="layui-tab layui-tab-card itemTab" lay-filter="newsOne">
+        <ul class="layui-tab-title tabTitle">
+          <li class="layui-this chooseItem" lay-id="/xzyw">刑侦要闻</li>
+          <li lay-id="/work">总队动态</li>
+        </ul>
+        <div class="more newsOneMore">
+          更多
+        </div>
+        <div class="layui-tab-content showItemContent">
+          <div class="layui-tab-item layui-show">
+            <ul class="contentItemList">
+              <% for(var i=0;i<IndexPageItems['刑侦要闻'].length;i++){
+                  const ele=IndexPageItems['刑侦要闻'][i];
+                  %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+          <div class="layui-tab-item">
+            <ul class="contentItemList">
+              <% for(var i=0;i<IndexPageItems['总队动态'].length;i++){
+                const ele=IndexPageItems['总队动态'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contentSearch">
+    <div class="contentSearchLeft">
+      <form action="/search">
+        <div class="netSearch">
+          <label class="layui-form-label">站内搜索</label>
+          <div class="layui-input-block search">
+            <input type="text" name="keyWords" required lay-verify="required" placeholder="请输入关键字" autocomplete="off"
+              class="layui-input">
+          </div>
+        </div>
+        <button type="submit" class="layui-btn searchButton">搜索</button>
+      </form>
+    </div>
+  </div>
+  <% if (Ads['腰线']!=null){ %>
+  <div id="contentPlayer">
+    <div id="contentPlayerInner">
+      <div id="contentPlayerOne">
+        <% for(var i=0;i<Ads['腰线'].length;i++){ %>
+        <a href="<%=Ads['腰线'][i].Link%>"><img src="<%=Ads['腰线'][i].Img%>" alt="<%=Ads['腰线'][i].Title%>" /></a>
+        <% } %>
+      </div>
+      <div id="contentPlayerTwo"></div>
+    </div>
+  </div>
+  <% } %>
+  <div class="contentModuleUp">
+    <div class="contentModuleItem tabChoose">
+      <div class="layui-tab layui-tab-card itemTab" lay-filter="newsTwo">
+        <ul class="layui-tab-title tabTitle">
+          <li class="layui-this" lay-id="/talk">领导讲话</li>
+          <li lay-id="/Instructions">领导批示</li>
+        </ul>
+        <div class="more newsTwoMore">
+          更多
+        </div>
+        <div class="layui-tab-content showItemContent">
+          <div class="layui-tab-item layui-show">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['领导讲话'].length;i++){
+                const ele=IndexPageItems['领导讲话'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+          <div class="layui-tab-item">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['领导批示'].length;i++){
+                const ele=IndexPageItems['领导批示'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contentModuleItem tabChoose">
+      <div class="layui-tab layui-tab-card itemTab" lay-filter="newsThree">
+        <ul class="layui-tab-title tabTitle">
+          <li class="layui-this" lay-id="/notice">通知通报</li>
+          <li lay-id="/brief">简报专报</li>
+        </ul>
+        <div class="more newsThreeMore">
+          更多
+        </div>
+        <div class="layui-tab-content showItemContent">
+          <div class="layui-tab-item layui-show">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['通知通报'].length;i++){
+                const ele=IndexPageItems['通知通报'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <% if (IndexPageItems['通知通报']) { %>
+                  <% if (new Date(new Date().toLocaleDateString()).getTime() === new Date(new Date(ele.CreatedTime).toLocaleDateString()).getTime()) { %>
+                  <span class="itemContentRight" style="color:#EC5553;"><%=ele.CreatedTime%></span>
+                  <% } else { %>
+                  <span class="itemContentRight"><%=ele.CreatedTime%></span>
+                  <% } %>
+                <% } else { %>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+                <% } %>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+          <div class="layui-tab-item">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['简报专报'].length;i++){
+                const ele=IndexPageItems['简报专报'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contentModuleItem">
+      <div class="layui-tab layui-tab-brief itemTab" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title tabTitle">
+          <li class="layui-this chooseItem">常用系统</li>
+          <li class="oldWebsite">旧版网站</li>
+        </ul>
+        <div class="layui-tab-content showItemContent">
+          <div class="layui-tab-item layui-show">
+            <ul class="websiteList">
+              <li>
+                <div>应用管理</div>
+              </li>
+              <li>
+                <div>综合管理</div>
+              </li>
+              <li>
+                <div>人事管理</div>
+              </li>
+              <li>
+                <div>云管理</div>
+              </li>
+              <li>
+                <div>视频系统</div>
+              </li>
+              <li>
+                <div>数据分析</div>
+              </li>
+            </ul>
+          </div>
+          <div class="layui-tab-item">
+            <ul>
+              <ul class="websiteList">
+                <li>
+                  <div>应用管理</div>
+                </li>
+                <li>
+                  <div>综合管理</div>
+                </li>
+                <li>
+                  <div>人事管理</div>
+                </li>
+                <li>
+                  <div>云管理</div>
+                </li>
+                <li>
+                  <div>视频系统</div>
+                </li>
+                <li>
+                  <div>数据分析</div>
+                </li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contentModuleDown">
+    <div class="contentModuleItem tabChoose">
+      <div class="layui-tab layui-tab-card itemTab" lay-filter="newsFour">
+        <ul class="layui-tab-title tabTitle">
+          <li class="layui-this" lay-id="/CityStateNews">市州动态</li>
+          <li lay-id="/CountyCriminalInvestigation">县域刑侦</li>
+        </ul>
+        <div class="more newsFourMore">
+          更多
+        </div>
+        <div class="layui-tab-content showItemContent">
+          <div class="layui-tab-item layui-show">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['市州动态'].length;i++){
+                const ele=IndexPageItems['市州动态'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+          <div class="layui-tab-item">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['县域刑侦'].length;i++){
+                const ele=IndexPageItems['县域刑侦'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contentModuleItem tabChoose">
+      <div class="layui-tab layui-tab-card itemTab" lay-filter="newsFive">
+        <ul class="layui-tab-title tabTitle">
+          <li class="layui-this" lay-id="/zpdj">侦破打击</li>
+          <li lay-id="/jzjf">技战技法</li>
+        </ul>
+        <div class="more newsFiveMore">
+          更多
+        </div>
+        <div class="layui-tab-content showItemContent">
+          <div class="layui-tab-item layui-show">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['侦破打击'].length;i++){
+                const ele=IndexPageItems['侦破打击'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+          <div class="layui-tab-item">
+            <ul class="itemContent">
+              <% for(var i=0;i<IndexPageItems['技战技法'].length;i++){
+                const ele=IndexPageItems['技战技法'][i];
+                %>
+              <li onclick='window.open("/detail/<%=ele.ContentId%>")'>
+                <span class="itemContentLeft"><%=ele.Title%></span>
+                <span class="itemContentRight"><%=ele.CreatedTime%></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contentModuleItem">
+      <div class="itemTab informationRanking">
+        <div class="messageTitle">
+          信息发布排行
+        </div>
+        <div class="messageShow">
+          <div class="layui-tab layui-tab-brief itemTab" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title tabTitle messageRanking">
+              <li class="layui-this chooseItem">内属单位</li>
+              <li>市州刑侦</li>
+              <li>区县刑侦</li>
+            </ul>
+            <div class="layui-tab-content showOrgContent">
+              <div class="layui-tab-item layui-show">
+                <ul class="messageTabList">
+                  <li>
+                    <span>名次</span>
+                    <span>单位名称</span>
+                    <span>发布数量</span>
+                  </li>
+                  <li>
+                    <span>1</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>2</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>3</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>4</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>5</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>6</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>7</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>8</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>9</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>10</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="layui-tab-item">
+                <ul class="messageTabList">
+                  <li>
+                    <span>名次</span>
+                    <span>单位名称</span>
+                    <span>发布数量</span>
+                  </li>
+                  <li>
+                    <span>1</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>2</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>3</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>4</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>5</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="layui-tab-item">
+                <ul class="messageTabList">
+                  <li>
+                    <span>名次</span>
+                    <span>单位名称</span>
+                    <span>发布数量</span>
+                  </li>
+                  <li>
+                    <span>1</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>2</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>3</span>
+                    <span>湖南刑侦总队</span>
+                    <span>10</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if (Ads['底部']!=null){ %>
+  <div class="contentBottomImg">
+    <ul>
+      <% for(var i=0;i<Ads['底部'].length;i++){ %>
+      <% if (Ads['底部'][i].Type=='P'){ %>
+      <li onclick='window.open("<%=Ads['底部'][i].Link%>")'>
+        <img src="<%=Ads['底部'][i].Img%>" alt="<%=Ads['底部'][i].Title%>" />
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </div>
+  <% }%>
+
+
+  <div class="contentNavigation">
+    <div class="linksHeader">
+      <div class="linksHeader_r1">
+        <div class="vF_tab unit2">
+          <div class="vF_title_bar_links">
+            <h2 class="links_area1 current3">
+              <!-- <i class="layui-icon layui-icon-triangle-d triangle-icon"></i> -->
+              <a href="javascript:void(0)">全国刑侦导航</a>
+            </h2>
+            <h2 class="links_area2">
+              <!-- <i class="layui-icon layui-icon-triangle-d triangle-icon"></i> -->
+              <a href="javascript:void(0)">全省刑侦导航</a>
+            </h2>
+            <h2 class="links_area3">
+              <!-- <i class="layui-icon layui-icon-triangle-d triangle-icon"></i> -->
+              <a href="javascript:void(0)">厅机关导航</a>
+            </h2>
+            <h2 class="links_area4">
+              <!-- <i class="layui-icon layui-icon-triangle-d triangle-icon"></i> -->
+              <a href="javascript:void(0)">应用系统导航</a>
+            </h2>
+            <h2 class="links_area5">
+              <!-- <i class="layui-icon layui-icon-triangle-d triangle-icon"></i> -->
+              <a href="javascript:void(0)">侦查资源导航</a>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <ul class="tab-con links">
+        <li><a href="http://10.1.24.207:9080/xzj/html/index.html" target="_blank" title="公安部刑侦局">公安部刑侦局</a></li>
+        <li><a href="http://10.2.89.114" target="_blank" title="公安部物证鉴定中心">公安部物证鉴定中心</a></li>
+        <li><a href="http://10.2.210.1/" target="_blank" title="部属警犬基地所校">部属警犬基地所校</a></li>
+        <li><a href="http://www1.xz.bj/" target="_blank" title="北京刑侦">北京刑侦</a></li>
+        <li><a href="http://www.xzj.tj/tjxz/" target="_blank" title="天津刑侦">天津刑侦</a></li>
+        <li><a href="http://www.eb/tingjiguan/xjzd/" target="_blank" title="河北刑侦">河北刑侦</a></li>
+        <li><a href="http://www.xzzd.sx/" target="_blank" title="山西刑侦">山西刑侦</a></li>
+        <li><a href="http://10.94.2.161/" target="_blank" title="山西科技">山西科技</a></li>
+        <li><a href="http://hcid.hl/" target="_blank" title="内蒙古刑侦">内蒙古刑侦</a></li>
+        <li><a href="http://10.78.50.73/" target="_blank" title="辽宁刑侦">辽宁刑侦</a></li>
+        <li><a href="http://10.78.33.105:8080/index.asp" target="_blank" title="辽宁刑事技术">辽宁刑事技术</a></li>
+        <li><a href="http://10.106.12.6/" target="_blank" title="吉林刑侦">吉林刑侦</a></li>
+        <li><a href="http://hcid.hl/" target="_blank" title="黑龙江刑侦">黑龙江刑侦</a></li>
+        <li><a href="http://35.1.4.166/" target="_blank" title="黑龙江刑事技术">黑龙江刑事技术</a></li>
+        <li><a href="http://www.xz.sh/" target="_blank" title="上海刑侦">上海刑侦</a></li>
+        <li><a href="http://www.xz.js/jsxz/" target="_blank" title="江苏刑侦">江苏刑侦</a></li>
+        <li><a href="http://www.xz.gat.zj/" target="_blank" title="浙江刑侦">浙江刑侦</a></li>
+        <li><a href="http://10.124.40.182/" target="_blank" title="安徽刑侦">安徽刑侦</a></li>
+        <li><a href="http://10.124.1.98:8080/" target="_blank" title="安徽刑事技术">安徽刑事技术</a></li>
+        <li><a href="http://44.5.2.179/" target="_blank" title="福建刑侦">福建刑侦</a></li>
+        <li><a href="http://44.5.2.178:81/" target="_blank" title="福建刑事技术">福建刑事技术</a></li>
+        <li><a href="http://10.136.31.6/jxsiteWeb/" target="_blank" title="江西刑警">江西刑警</a></li>
+        <li><a href="http://10.48.144.189/" target="_blank" title="山东刑侦">山东刑侦</a></li>
+        <li><a href="http://www.yzzfzzc.gat.sd/" target="_blank" title="山东有组织侦查">山东有组织侦查</a></li>
+        <li><a href="http://www.xz.en/" target="_blank" title="河南刑侦">河南刑侦</a></li>
+        <li><a href="http://10.142.55.25/" target="_blank" title="湖南刑侦">湖南刑侦</a></li>
+        <li><a href="http://www.gd/zsjg/xzj1/" target="_blank" title="广东刑侦">广东刑侦</a></li>
+        <li><a href="http://59.1.88.134/" target="_blank" title="湖北刑侦">湖北刑侦</a></li>
+        <li><a href="http://10.148.2.2/" target="_blank" title="广西刑侦">广西刑侦</a></li>
+        <li><a href="http://74.10.26.153/" target="_blank" title="海南刑警">海南刑警</a></li>
+        <li><a href="http://www.xz.cq/index.html" target="_blank" title="重庆刑警">重庆刑警</a></li>
+        <li><a href="http://www.xz.sc/" target="_blank" title="四川刑侦">四川刑侦</a></li>
+        <li><a href="http://www.gz/xzzd/" target="_blank" title="贵州刑侦">贵州刑侦</a></li>
+        <li><a href="http://www.xz.yn/" target="_blank" title="云南刑侦">云南刑侦</a></li>
+        <li><a href="http://10.188.32.19/" target="_blank" title="西藏刑侦">西藏刑侦</a></li>
+        <li><a href="http://92.1.56.60/share" target="_blank" title="陕西刑侦">陕西刑侦</a></li>
+        <li><a href="http://10.178.3.158/xzzd/sysIndex!index.do" target="_blank" title="甘肃刑侦">甘肃刑侦</a></li>
+        <li><a href="http://98.1.125.100/" target="_blank" title="青海刑侦">青海刑侦</a></li>
+        <li><a href="http://www.xz.nx/" target="_blank" title="宁夏刑侦">宁夏刑侦</a></li>
+        <li><a href="http://www.xz.xj/" target="_blank" title="新疆刑侦">新疆刑侦</a></li>
+        <li><a href="http://10.84.1.9/xjzd/" target="_blank" title="兵团刑侦">兵团刑侦</a></li>
+      </ul>
+      <ul class="tab-con links2">
+        <li><a href="http://10.143.19.20:8092/xzmh/qbpt_lhzzxx.htm" target="_blank" title="长沙刑侦">长沙刑侦</a></li>
+        <li><a href="http://65.48.1.30/" target="_blank" title="衡阳刑侦">衡阳刑侦</a></li>
+        <li><a href="http://10.143.169.185/" target="_blank" title="株洲刑侦">株洲刑侦</a></li>
+        <li><a href="http://10.143.122.84:92/" target="_blank" title="湘潭刑侦">湘潭刑侦</a></li>
+        <li><a href="http://10.144.78.175/" target="_blank" title="岳阳刑侦">岳阳刑侦</a></li>
+        <li><a href="http://10.145.154.12:91/" target="_blank" title="邵阳刑侦">邵阳刑侦</a></li>
+        <li><a href="http://www.cd.hn/" target="_blank" title="常德刑侦">常德刑侦</a></li>
+        <li><a href="http://www.ga.zjj.hn/" target="_blank" title="张家界刑侦">张家界刑侦</a></li>
+        <li><a href="http://10.144.169.132/" target="_blank" title="益阳刑侦">益阳刑侦</a></li>
+        <li><a href="http://65.176.15.45/Index.html" target="_blank" title="郴州刑侦">郴州刑侦</a></li>
+        <li><a href="http://xzw.yzs.hn/" target="_blank" title="永州刑侦">永州刑侦</a></li>
+        <li><a href="http://10.146.92.15:380/" target="_blank" title="怀化刑侦">怀化刑侦</a></li>
+        <li><a href="http://10.145.193.100:9002/" target="_blank" title="娄底刑侦">娄底刑侦</a></li>
+        <li><a href="http://65.240.0.12:8014/" target="_blank" title="自治州刑侦">自治州刑侦</a></li>
+      </ul>
+      <ul class="tab-con links3">
+        <li><a href="http://www.hn/" target="_blank" title="湖南省公安厅">湖南省公安厅</a></li>
+        <li><a href="http://www.jlb.net.hn/" target="_blank" title="警令部">警令部</a></li>
+        <li><a href="http://zzb.hn/" target="_blank" title="政治部">政治部</a></li>
+        <li><a href="http://10.142.55.93:8088/lgequ/portal/index.jsp" target="_blank" title="警务保障部">警务保障部</a></li>
+        <li><a href="http://10.142.73.6:8080/hnffclxxw/" target="_blank" title="纪委">纪委</a></li>
+        <li><a href="http://10.142.10.39:88/" target="_blank" title="警务督察总队">警务督察总队</a></li>
+        <li><a href="http://65.26.10.62:8016/" target="_blank" title="经侦总队">经侦总队</a></li>
+        <li><a href="http://10.142.168.46:8080/index/toZamh.action###" target="_blank" title="治安总队">治安总队</a></li>
+        <li><a href="http://10.142.21.106/web/index.action" target="_blank" title="边防管理局">边防管理局</a></li>
+        <li><a href="http://10.142.22.1/" target="_blank" title="人口与出入境局">人口与出入境局</a></li>
+        <li><a href="http://www.jgzd.hn/" target="_blank" title="监管总队">监管总队</a></li>
+        <li><a href="http://www.jc.hn//web/index.html#/foremianFrame" target="_blank" title="机场公安局">机场公安局</a></li>
+        <li><a href="http://10.142.37.33/nets/jjzdga/page/index.shtml?iv=357179" target="_blank" title="交通管理局">交通管理局</a>
+        </li>
+        <li><a href="http://www.fz.hn/index.htm" target="_blank" title="法制总队">法制总队</a></li>
+        <li><a href="http://www.fkbzd.hn/" target="_blank" title="反恐总队">反恐总队</a></li>
+        <li><a href="http://www.xf.hn/" target="_blank" title="信访处">信访处</a></li>
+        <li><a href="http://www.jd.hn/nebula/doorWeb/doorWebsite/doorWebsite_index.jsp" target="_blank"
+            title="禁毒总队">禁毒总队</a></li>
+        <li><a href="http://www.gz.hn/" target="_blank" title="警察学院">警察学院</a></li>
+        <li><a href="http://www.slga.hn/" target="_blank" title="森林公安">森林公安</a></li>
+        <li><a href="http://www.jcxh.hn/" target="_blank" title="湖南警察协会">湖南警察协会</a></li>
+        <li><a href="http://10.142.72.130/NETS/skss/page/pc/index/index.shtml?iv=2425" target="_blank"
+            title="湖南省看守所">湖南省看守所</a></li>
+        <li><a href="http://10.142.72.100/" target="_blank" title="湖南省强制医疗所">湖南省强制医疗所</a></li>
+        <li><a href="http://10.4.72.1/" target="_blank" title="长铁公安处">长铁公安处</a></li>
+      </ul>
+      <ul class="tab-con links4">
+        <!-- <div>部级应用</div> -->
+        <li><a href="http://xz.xz.ga/sso/login.jsp" target="_blank" title="全国刑侦专业应用系统">全国刑侦专业应用系统</a></li>
+        <li><a href="http://dyfz.xz.ga/" target="_blank" title="公安部电信诈骗案件侦办平台">公安部电信诈骗案件侦办平台</a></li>
+        <li><a href="https://ys.zyfw.ga/main.action" target="_blank" title="公安部云搜">公安部云搜</a></li>
+        <li><a href="https://xyj.zyfw.ga/login" target="_blank" title="公安部云鉴">公安部云鉴</a></li>
+        <li><a href="http://10.1.2.43:9080/gabxcky/pages/security/login.action" target="_blank"
+            title="全国公安机关现场勘验信息系统">全国公安机关现场勘验信息系统</a></li>
+        <li><a href="http://ztry.xz.ga/zyk_zt//pages/xzztry/login.jsp?error=1" target="_blank"
+            title="全国在逃人员信息系统">全国在逃人员信息系统</a></li>
+        <li><a href="http://tjl.xz.ga/zxyw_gab/ztry/tjlsy.do" target="_blank" title="公安部通缉令信息系统">公安部通缉令信息系统</a></li>
+        <li>DNA系统</li>
+        <li>指纹系统</li>
+        <li>足迹系统</li>
+        <!-- <div>省级应用</div> -->
+        <li><a href="http://xz.xz.hn/login;jsessionid=8C503F0E47908EDB0AF566F91AD9E58C" target="_blank"
+            title="湖南刑侦专业应用系统">湖南刑侦专业应用系统</a></li>
+        <li><a href="http://www.qbpt.hn/" target="_blank" title="湖南公安情报信息综合应用平台">湖南公安情报信息综合应用平台</a></li>
+        <!-- <div>常用办公</div> -->
+        <li><a href="ftp://10.142.16.113/" target="_blank" title="湖南刑侦FTP">湖南刑侦FTP</a></li>
+        <li><a href="http://10.142.77.72/jsp/main/index.jsp" target="_blank"
+            title="湖南省公安办公自动化与精细化管理系统">湖南省公安办公自动化与精细化管理系统</a></li>
+        <li><a href="http://mcdb.zx.ga/index.html" target="_blank" title="公安部内部电报传真系统">公安部内部电报传真系统</a>
+        </li>
+        <li><a href="http://10.142.22.243/" target="_blank" title="湖南省公安厅文件管理系统">湖南省公安厅文件管理系统</a></li>
+        <li><a href="http://65.26.10.71/app/" target="_blank" title="全国刑侦部门四级视频会商系统">全国刑侦部门四级视频会商系统</a></li>
+      </ul>
+      <ul class="tab-con links5">
+      </ul>
+    </div>
+  </div>
+
+  <div class="contentPageviews">
+    <span>信息总数：<%=cc%></span>
+    <span>总访客数：<%=gc%></span>
+    <span>今日访客数：<%=gd%></span>
+    <span>今日浏览量：<%=rd%></span>
+    <span>当前在线：<%=ol%>人</span>
+  </div>
+</div>

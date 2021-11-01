@@ -1,0 +1,39 @@
+<div class="news">
+  <div class="newsDetail">
+    <div class="newsBreadCrumb">
+      <span class="layui-breadcrumb">
+        <a href="/">首页</a>
+        <a href="<%=Uri%>" class="changeTab"> <%=Name%></a>
+        <a><cite>详情</cite></a>
+      </span>
+    </div>
+    <div class="newsContent">
+      <h2 class="newsTitle"><%=Content.Title%></h2>
+      <div class="subTitle">
+        <span>发布单位：<%=Content.OrgName%> </span>
+        <span>发布时间：<%=Content.CreatedTime%></span>
+        <span>阅读次数：<%=Content.Hits%>次</span>
+        <span>信息来源：<%=Content.Allow%></span>
+      </div>
+      <div class="newsData">
+        <%- Content.Content%>
+      </div>
+      <% if (files.length!=0){ %> 
+        <div class="newsFile">
+          <div class="fileTitle">
+            附件:
+          </div>
+          <ul>
+            <% for(var j=0;j<files.length;j++){
+              const ele=files[j];
+            %>
+            <li>
+              <a href="<%=ele.FileUrl%>"  target="_blank"> <%=ele.OriginFileName%></a>
+            </li>
+          <% } %>
+          </ul>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
